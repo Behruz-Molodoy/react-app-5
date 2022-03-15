@@ -2,7 +2,7 @@ import Home from "./navigationPage/Home";
 import Login from "./navigationPage/Login";
 import Prouduct from "./navigationPage/Prouduct";
 import Services from "./navigationPage/Services";
-import { HOME_PAGE, PRODUCT_PAGE, SERVICES_PAGE } from "./utils/const";
+import { HOME_PAGE, LOGIN_PAGE, PRODUCT_PAGE, SERVICES_PAGE } from "./utils/const";
 
 export const privateRoutes = [
   { path: HOME_PAGE, element: Home },
@@ -11,5 +11,6 @@ export const privateRoutes = [
   { path: '*', element: Home },
 ]
 export const publicRoutes = [
-  { path: '*', element: Login }
+  { path: LOGIN_PAGE, element: Login },
+  { path: '*', element: Login },
 ]

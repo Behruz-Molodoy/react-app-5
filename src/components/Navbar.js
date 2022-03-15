@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { Button } from './Button'
-import { HOME_PAGE, PRODUCT_PAGE, SERVICES_PAGE } from '../utils/const'
+import { HOME_PAGE, LOGIN_PAGE, PRODUCT_PAGE, SERVICES_PAGE } from '../utils/const'
 import { Context } from '../App'
 
 export default function Navbar() {
   const [click, setClick] = useState(false)
   const [button] = useState(true)
-  const { user , setUser } = useContext(Context)
+  const { user, setUser } = useContext(Context)
   const handleClick = () => {
     setClick(!click)
   }
@@ -18,8 +18,11 @@ export default function Navbar() {
     { to: SERVICES_PAGE, linkName: 'Services' },
   ]
   const closeMobileMenu = () => {
-    localStorage.clear()
+    setClick(false)
+  }
+  const quiteLogin = () => {
     setUser(false)
+    localStorage.clear()
   }
   return (
     <nav className='navbar'>
@@ -34,12 +37,12 @@ export default function Navbar() {
               <Link to={to} className='nav-links' onClick={closeMobileMenu}>{linkName}</Link>
             </li>
           ))}
-          <li className='nav-btn' onClick={closeMobileMenu}>
+          <li className='nav-btn' onClick={quiteLogin}>
             {button
-              ? (<Link to='sign-up' className='btn-link'>
+              ? (<Link to={LOGIN_PAGE} className='btn-link'>
                 <Button buttonStyle='btn--outline'>{user ? 'Quit Login' : 'Sign-up'}</Button>
               </Link>)
-              : (<Link to='sign-up' className='btn-link'>
+              : (<Link to={LOGIN_PAGE} className='btn-link'>
                 <Button buttonStyle='btn--outline' buttonSize='btn--mobile'>{user ? 'Quit Login' : 'Sign-up'}</Button>
               </Link>)
             }
