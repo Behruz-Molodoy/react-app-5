@@ -1,13 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Context } from '../App'
 import { privateRoutes, publicRoutes } from '../routes'
 
 export default function AppRoutes() {
   const {user , setUser} = useContext(Context)
-  if(localStorage.getItem('auth')){
-    setUser(true)
-  }
+  useEffect(() => {
+    if(localStorage.getItem('auth')){
+      setUser(true)
+    }
+  },[])
   return (
     <Routes>
       {user
